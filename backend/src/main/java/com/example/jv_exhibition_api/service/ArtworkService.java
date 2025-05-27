@@ -1,10 +1,9 @@
 package com.example.jv_exhibition_api.service;
 
+import com.example.jv_exhibition_api.dto.ArtworkGetAllResponse;
 import com.example.jv_exhibition_api.model.Artwork;
 
-import java.util.List;
-
 public interface ArtworkService {
-    List<Artwork> getAllArtworks();
+    ArtworkGetAllResponse getAllArtworks(int pageNo, int pageSize);
     Artwork addArtwork(Artwork artwork);
 }
