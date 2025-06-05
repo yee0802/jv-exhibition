@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">jv-exhibition</string>
+    <string name="artwork_image">Artwork Image</string>
 </resources>
