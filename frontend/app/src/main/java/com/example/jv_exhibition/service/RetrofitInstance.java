@@ -9,7 +9,7 @@ public class RetrofitInstance {
     private static RetrofitInstance retrofitInstance = null;
     private static final String BASE_URL = "http://10.0.2.2:8080/api/v1/";
 
-    public static ArtworkApiService getService() {
+    public static ApiService getService() {
         if (retrofitInstance == null) {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -21,7 +21,7 @@ public class RetrofitInstance {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
-            return retrofit.create(ArtworkApiService.class);
+            return retrofit.create(ApiService.class);
         }
 
         return null;

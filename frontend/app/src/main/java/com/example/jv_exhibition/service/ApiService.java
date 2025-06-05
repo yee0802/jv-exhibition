@@ -6,7 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface ArtworkApiService {
+public interface ApiService {
     @GET("artworks")
     Call<ArtworkResponse> getAllArtworks(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize);
 }
