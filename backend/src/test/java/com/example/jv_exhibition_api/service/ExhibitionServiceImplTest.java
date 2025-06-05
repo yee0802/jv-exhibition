@@ -15,8 +15,10 @@ import org.mockito.*;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -54,6 +56,31 @@ public class ExhibitionServiceImplTest {
         exhibition.setName("exhibition1");
         exhibition.setArtworks(new ArrayList<>());
         exhibition.getArtworks().add(artwork);
+    }
+
+    @Test
+    @DisplayName("getAllExhibitions: should return all exhibitions")
+    public void testGetAllExhibitions() {
+        Exhibition exhibition1 = new Exhibition();
+        Exhibition exhibition2 = new Exhibition();
+        Exhibition exhibition3 = new Exhibition();
+
+        exhibition1.setName("exhibition1");
+        exhibition2.setName("exhibition2");
+        exhibition3.setName("exhibition3");
+
+        List<Exhibition> exhibitionList = new ArrayList<>(List.of(exhibition1, exhibition2, exhibition3));
+
+        when(mockExhibitionRepository.findAll()).thenReturn(exhibitionList);
+
+        List<Exhibition> actualResult = mockService.getAllExhibitions();
+
+        assertThat(actualResult).hasSize(3);
+        assertThat(actualResult.getFirst()).hasFieldOrPropertyWithValue("name", "exhibition1");
+        assertThat(actualResult.get(1)).hasFieldOrPropertyWithValue("name", "exhibition2");
+        assertThat(actualResult.getLast()).hasFieldOrPropertyWithValue("name", "exhibition3");
+
+        verify(mockExhibitionRepository, times(1)).findAll();
     }
 
     @Test

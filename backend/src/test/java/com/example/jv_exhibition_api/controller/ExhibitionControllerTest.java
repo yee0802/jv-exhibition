@@ -19,6 +19,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -55,8 +58,31 @@ public class ExhibitionControllerTest {
     }
 
     @Test
+    @DisplayName("GET /exhibitions - should return all exhibitions")
+    public void testGetAllExhibitions() throws Exception {
+        Exhibition exhibition1 = new Exhibition();
+        Exhibition exhibition2 = new Exhibition();
+        Exhibition exhibition3 = new Exhibition();
+
+        exhibition1.setName("exhibition1");
+        exhibition2.setName("exhibition2");
+        exhibition3.setName("exhibition3");
+
+        List<Exhibition> exhibitionList = new ArrayList<>(List.of(exhibition1, exhibition2, exhibition3));
+
+        when(mockService.getAllExhibitions()).thenReturn(exhibitionList);
+
+        this.mockMvcController.perform(get("/exhibitions"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].name").value("exhibition1"))
+                .andExpect(jsonPath("$[1].name").value("exhibition2"))
+                .andExpect(jsonPath("$[2].name").value("exhibition3"));
+    }
+
+
+    @Test
     @DisplayName("GET /exhibitions/{id} - should return exhibition by id")
-    void testGetExhibitionById() throws Exception {
+    public void testGetExhibitionById() throws Exception {
         when(mockService.getExhibitionById(1L)).thenReturn(exhibition);
 
         mockMvcController.perform(get("/exhibitions/1"))
@@ -66,7 +92,7 @@ public class ExhibitionControllerTest {
 
     @Test
     @DisplayName("POST /exhibitions - should create exhibition")
-    void testCreateExhibition() throws Exception {
+    public void testCreateExhibition() throws Exception {
         when(mockService.createExhibition(any())).thenReturn(exhibition);
 
         mockMvcController.perform(post("/exhibitions")
@@ -78,7 +104,7 @@ public class ExhibitionControllerTest {
 
     @Test
     @DisplayName("POST /exhibitions/{id}/add - should add artwork to specified exhibition")
-    void testAddArtworkToExhibition() throws Exception {
+    public void testAddArtworkToExhibition() throws Exception {
         when(mockService.addArtworkToExhibition(eq(1L), any())).thenReturn(exhibition);
 
         mockMvcController.perform(post("/exhibitions/1/add")
@@ -89,7 +115,7 @@ public class ExhibitionControllerTest {
 
     @Test
     @DisplayName("POST /exhibitions/{id}/remove - should remove artwork from specified exhibition")
-    void testRemoveArtworkFromExhibition() throws Exception {
+    public void testRemoveArtworkFromExhibition() throws Exception {
         when(mockService.removeArtworkFromExhibition(eq(1L), any())).thenReturn(exhibition);
 
         mockMvcController.perform(post("/exhibitions/1/remove")
