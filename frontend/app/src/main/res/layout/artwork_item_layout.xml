@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="artwork"
+            type="com.example.jv_exhibition.model.Artwork" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:backgroundTint="@color/med_gray"
+        android:elevation="6dp"
+        app:cardCornerRadius="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/artwork_image"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/artwork_image"
+                app:imageUrl="@{artwork.imageUrl}" />
+
+            <TextView
+                android:id="@+id/artwork_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text='@{artwork.title}'
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/artwork_artist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text='@{artwork.artist}'
+                android:textColor="@color/light_gray"
+                android:textSize="16sp"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/artwork_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text='@{artwork.date}'
+                android:textColor="@color/light_gray"
+                android:textSize="16sp"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/artwork_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text='@{artwork.description.length() > 250 ? artwork.description.substring(0, 250) + "..." : artwork.description}'
+                android:textColor="@color/light_gray"
+                android:textSize="14sp"
+                android:layout_marginTop="6dp"
+                android:visibility='@{artwork.description != null &amp;&amp; !artwork.description.isEmpty() ? View.VISIBLE : View.GONE}' />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
