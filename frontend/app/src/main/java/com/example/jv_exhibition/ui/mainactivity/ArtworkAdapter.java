@@ -32,9 +32,9 @@ public class ArtworkAdapter extends RecyclerView.Adapter<ArtworkAdapter.ArtworkV
     public static class ArtworkViewHolder extends RecyclerView.ViewHolder {
         private ArtworkItemLayoutBinding binding;
 
-        public ArtworkViewHolder(@NonNull ArtworkItemLayoutBinding albumItemLayoutBinding, RecyclerViewInterface recyclerViewInterface) {
-            super(albumItemLayoutBinding.getRoot());
-            this.binding = albumItemLayoutBinding;
+        public ArtworkViewHolder(@NonNull ArtworkItemLayoutBinding artworkItemLayoutBinding, RecyclerViewInterface recyclerViewInterface) {
+            super(artworkItemLayoutBinding.getRoot());
+            this.binding = artworkItemLayoutBinding;
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
