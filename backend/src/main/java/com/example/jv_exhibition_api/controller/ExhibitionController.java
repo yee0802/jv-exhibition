@@ -9,12 +9,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/exhibitions")
 public class ExhibitionController {
 
     @Autowired
     private ExhibitionService exhibitionService;
+
+    @GetMapping
+    public ResponseEntity<List<Exhibition>> getAllExhibitions() {
+        return new ResponseEntity<>(exhibitionService.getAllExhibitions(), HttpStatus.OK);
+    }
 
     @GetMapping("/{exhibitionId}")
     public ResponseEntity<Exhibition> getExhibitionById(@PathVariable Long exhibitionId) {

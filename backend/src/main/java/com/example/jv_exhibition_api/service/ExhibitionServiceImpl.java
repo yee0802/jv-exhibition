@@ -11,6 +11,8 @@ import com.example.jv_exhibition_api.repository.ExhibitionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ExhibitionServiceImpl implements ExhibitionService {
     @Autowired
@@ -18,6 +20,11 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 
     @Autowired
     private ExhibitionRepository exhibitionRepository;
+
+    @Override
+    public List<Exhibition> getAllExhibitions() {
+        return exhibitionRepository.findAll();
+    }
 
     @Override
     public Exhibition getExhibitionById(Long id) {
