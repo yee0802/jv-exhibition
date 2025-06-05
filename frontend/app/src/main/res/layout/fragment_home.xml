@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.mainactivity.HomeFragment">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:background="@color/bg_dark_gray"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/main_search_view"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/search_view_background"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:focusable="false"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@id/main_recycler_view"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/main_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@color/bg_dark_gray"
+                    android:clipToPadding="false"
+                    android:paddingBottom="80dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/main_search_view"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/main_nav_button_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:gravity="center_vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <ImageButton
+                        android:id="@+id/main_btn_prev"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="@string/previous_button"
+                        android:src="@drawable/baseline_arrow_back_24"
+                        android:enabled="false"
+                        app:tint="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/main_page_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <ImageButton
+                        android:id="@+id/main_btn_next"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="@string/next_button"
+                        android:src="@drawable/baseline_arrow_forward_24"
+                        app:tint="@android:color/white" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>
