@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="exhibition"
+            type="com.example.jv_exhibition.model.Exhibition" />
+        <variable
+            name="clickHandler"
+            type="com.example.jv_exhibition.ui.exhibitiondetail.ExhibitionDetailClickHandler" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/bg_dark_gray"
+        android:fitsSystemWindows="true"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/exhibition_page_fab"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="back button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            app:tint="@color/white"
+            app:maxImageSize="35dp"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="@color/med_gray"
+            app:fabCustomSize="50dp"
+            android:onClick="@{clickHandler::onBackButtonClick}"
+            />
+
+        <TextView
+            android:id="@+id/exhibition_page_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text='@{exhibition.name}'
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/exhibition_page_recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            app:layout_constraintTop_toBottomOf="@id/exhibition_page_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
