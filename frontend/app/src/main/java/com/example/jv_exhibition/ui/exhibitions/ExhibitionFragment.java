@@ -1,5 +1,6 @@
 package com.example.jv_exhibition.ui.exhibitions;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jv_exhibition.R;
 import com.example.jv_exhibition.model.Exhibition;
+import com.example.jv_exhibition.ui.exhibitiondetail.ExhibitionDetailActivity;
 import com.example.jv_exhibition.ui.mainactivity.RecyclerViewInterface;
 
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ public class ExhibitionFragment extends Fragment implements RecyclerViewInterfac
     private ExhibitionAdapter adapter;
     private Button createButton;
     private EditText nameInput;
+    private static final String EXHIBITION_KEY = "exhibition_key";
 
     public ExhibitionFragment() {
         super(R.layout.fragment_exhibition);
@@ -62,6 +65,10 @@ public class ExhibitionFragment extends Fragment implements RecyclerViewInterfac
     }
 
     @Override
-    public void onItemClick(int position) {}
+    public void onItemClick(int position) {
+        Intent intent = new Intent(getActivity(), ExhibitionDetailActivity.class);
+        intent.putExtra(EXHIBITION_KEY, exhibitionsFromViewModel.get(position));
+        startActivity(intent);
+    }
 }
 
