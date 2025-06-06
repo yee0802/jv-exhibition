@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jv_exhibition.R;
+import com.example.jv_exhibition.ui.exhibitions.ExhibitionFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -33,14 +34,14 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
             return true;
         }
 
-        // TODO: Implement saved Exhibitions tab
-//        if (item.getItemId() == R.id.nav_bar_saved) {
-//            getSupportFragmentManager()
-//                    .beginTransaction()
-//                    .replace(R.id.main_frame_layout, new SavedArtworksFragment())
-//                    .commit();
-//            return true;
-//        }
+
+        if (item.getItemId() == R.id.nav_bar_saved) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.main_frame_layout, new ExhibitionFragment())
+                    .commit();
+            return true;
+        }
 
         return false;
     }
