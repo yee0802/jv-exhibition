@@ -31,6 +31,7 @@ public class HomeFragment extends Fragment implements RecyclerViewInterface {
     private FragmentHomeBinding binding;
     private MainActivityViewModel mainActivityViewModel;
     private ArtworkAdapter artworkAdapter;
+    private ArtworkClickHandler artworkClickHandler;
     private List<Artwork> allArtworks = new ArrayList<>();
     private List<Artwork> filteredArtworks = new ArrayList<>();
     private int currentPage = 0;
@@ -45,7 +46,10 @@ public class HomeFragment extends Fragment implements RecyclerViewInterface {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         View view = binding.getRoot();
 
-        artworkAdapter = new ArtworkAdapter(this, requireContext(), new ArrayList<>(), getActivity());
+        mainActivityViewModel.getExhibitions();
+        artworkClickHandler = new ArtworkClickHandler(requireContext(), mainActivityViewModel);
+
+        artworkAdapter = new ArtworkAdapter(this, requireContext(), new ArrayList<>(), getActivity(), artworkClickHandler);
         binding.mainRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.mainRecyclerView.setAdapter(artworkAdapter);
 

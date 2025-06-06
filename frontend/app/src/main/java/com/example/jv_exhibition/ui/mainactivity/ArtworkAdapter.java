@@ -20,13 +20,15 @@ public class ArtworkAdapter extends RecyclerView.Adapter<ArtworkAdapter.ArtworkV
     private FragmentActivity activity;
     private List<Artwork> artworkList;
     private Context context;
+    private ArtworkClickHandler handler;
     private final RecyclerViewInterface recyclerViewInterface;
 
-    public ArtworkAdapter(RecyclerViewInterface recyclerViewInterface, Context context, List<Artwork> artworkList, FragmentActivity activity) {
+    public ArtworkAdapter(RecyclerViewInterface recyclerViewInterface, Context context, List<Artwork> artworkList, FragmentActivity activity, ArtworkClickHandler clickHandler) {
         this.recyclerViewInterface = recyclerViewInterface;
         this.context = context;
         this.artworkList = artworkList;
         this.activity = activity;
+        this.handler = clickHandler;
     }
 
     public static class ArtworkViewHolder extends RecyclerView.ViewHolder {
@@ -68,6 +70,7 @@ public class ArtworkAdapter extends RecyclerView.Adapter<ArtworkAdapter.ArtworkV
     public void onBindViewHolder(@NonNull ArtworkViewHolder holder, int position) {
         Artwork artwork = artworkList.get(position);
         holder.binding.setArtwork(artwork);
+        holder.binding.setClickHandler(handler);
     }
 
     @Override
