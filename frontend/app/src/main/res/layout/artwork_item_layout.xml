@@ -7,6 +7,9 @@
         <variable
             name="artwork"
             type="com.example.jv_exhibition.model.Artwork" />
+        <variable
+            name="clickHandler"
+            type="com.example.jv_exhibition.ui.mainactivity.ArtworkClickHandler" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -67,7 +70,16 @@
                 android:textSize="14sp"
                 android:layout_marginTop="6dp"
                 android:visibility='@{artwork.description != null &amp;&amp; !artwork.description.isEmpty() ? View.VISIBLE : View.GONE}' />
-
         </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/exhibition_artwork_add_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:onClick="@{() -> clickHandler.onAddClick(artwork)}"
+            android:src="@drawable/add_icon"
+            android:backgroundTint="@color/white"
+            app:tint="@color/black" />
     </androidx.cardview.widget.CardView>
 </layout>
