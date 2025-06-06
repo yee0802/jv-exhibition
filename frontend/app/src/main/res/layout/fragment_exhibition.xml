@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/bg_dark_gray"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/exhibition_name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter exhibition name"
+            android:textColorHint="@color/light_gray"
+            android:textColor="@color/white"
+            android:inputType="text"
+            android:padding="12dp"
+            android:background="@drawable/search_view_background"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/create_exhibition_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Exhibition"
+            android:background="@drawable/search_view_background"
+            android:tint="@color/med_gray"
+            android:textColor="@color/white"
+            android:layout_marginBottom="16dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/exhibition_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="vertical"/>
+    </LinearLayout>
+</layout>
