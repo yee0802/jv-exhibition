@@ -30,7 +30,7 @@ To watch a video demonstration of this app, click on the image below:
 
 
 ## Setup Instructions
-### Prerequisites
+### Prerequisites:
 Before running this project locally, ensure you have the following installed:
 1. **Android Studio:** Installed and properly configured. [Download here]().
 2. **An IDE:** An IDE to run the API. (e.g. Intellij IDEA, Eclipse, or VS code)
@@ -43,7 +43,7 @@ git clone https://github.com/yee0802/jv-exhibition.git
 cd jv-exhibition
 ```
 
-### Running the API
+### Running the API:
 1. **Open the `backend` folder in your IDE of choice.**
 2. **Configure the database:** (Optional)
     * By default, the API uses H2 in-memory database for development.
